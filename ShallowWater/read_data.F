@@ -49,7 +49,7 @@ c     locals
       if ( time .eq. 0. ) then
 c     assume that there is only one data slab that is to be use at all
 c     times
-         call read_field_netcdf( ncdatafile, myetadata, mynx, myny, f_in )
+         call read_field_netcdf(ncdatafile,myetadata,mynx,myny,f_in)
          do iy = 1, ny
             do ix = 1, nx
                eta_data(ix,iy) = f_in(ix,iy)
@@ -107,26 +107,26 @@ c     locals
       if ( time .eq. 0. ) then
 c     assume that there is only one data slab that is to be use at all
 c     times
-         call read_field_netcdf( ncdatafile, strudata, mynx, myny, f_in )
+         call read_field_netcdf(ncdatafile,strudata,mynx,myny,f_in)
          do iy = 1, ny
             do ix = 1, nx
                u_data(ix,iy) = f_in(ix,iy)
             end do
          end do
-         call read_field_netcdf( ncdatafile, strvdata, mynx, myny, f_in )
+         call read_field_netcdf(ncdatafile,strvdata,mynx,myny,f_in)
          do iy = 1, ny
             do ix = 1, nx
                v_data(ix,iy) = f_in(ix,iy)
             end do
          end do
       else if ( time .gt. 0. ) then
-         call read_snap_netcdf( ncdatafile, time, mynx, myny, strU, f_in )
+         call read_snap_netcdf(ncdatafile,time,mynx,myny,strU,f_in)
          do iy = 1, ny
             do ix = 1, nx
                u_data(ix,iy) = f_in(ix,iy)
             end do
          end do
-         call read_snap_netcdf( ncdatafile, time, mynx, myny, strV, f_in )
+         call read_snap_netcdf(ncdatafile,time,mynx,myny,strV,f_in)
          do iy = 1, ny
             do ix = 1, nx
                v_data(ix,iy) = f_in(ix,iy)

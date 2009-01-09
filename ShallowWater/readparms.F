@@ -298,7 +298,7 @@ c$$$         end do
                end do
             end do
          end if
-         call boundary_conditions( mynx, myny, frict, xperiodic, yperiodic ) 
+         call boundary_conditions(mynx,myny,frict,xperiodic,yperiodic) 
 c     forcing
          str1 = 'uforce' ; str2 = 'vforce'
          call read_field( ncdatafile, mytime, str1, uforce )
@@ -382,7 +382,7 @@ c
 c     I guess this is completely superfluous, since boundaries are handled
 c     in calc_depth_uv for hu and hv
 c
-      call boundary_conditions( mynx, myny, depth, xperiodic, yperiodic ) 
+      call boundary_conditions(mynx,myny,depth,xperiodic,yperiodic) 
 c
       return
       end !subroutine prep_depth
@@ -550,8 +550,8 @@ c
             end if
          end do               
       end do
-      call boundary_conditions( mynx, myny, umask, xperiodic, yperiodic )
-      call boundary_conditions( mynx, myny, vmask, xperiodic, yperiodic )
+      call boundary_conditions(mynx,myny,umask,xperiodic,yperiodic)
+      call boundary_conditions(mynx,myny,vmask,xperiodic,yperiodic)
 c$$$      if ( xperiodic ) then
 c$$$         do iy = 0, ny+1
 c$$$            umask(0,iy)    = umask(nx,iy) ! not really necessary

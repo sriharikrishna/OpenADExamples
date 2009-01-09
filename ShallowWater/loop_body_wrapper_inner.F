@@ -1,5 +1,5 @@
 c$openad XXX Template OADrts/ad_template.joint_split_iif.f
-      subroutine loop_body_wrapper_inner(local_u, local_v, local_eta, cost, 
+      subroutine loop_body_wrapper_inner(local_u,local_v,local_eta,cost,
      & calc_cost, time, time_index, nio) 
 
       use size
