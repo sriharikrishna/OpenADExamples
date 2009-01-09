@@ -1,4 +1,4 @@
-c$openad XXX Template OpenAD/ad_template.joint.f
+c$openad XXX Template OADrts/ad_template.joint.f
       subroutine initial_values
 
       use size
@@ -44,7 +44,7 @@ c$openad xxx simple loop
       return
       end !subroutine initial_values
 
-c$openad XXX Template OpenAD/ad_template.joint.f
+c$openad XXX Template OADrts/ad_template.joint.f
       subroutine calc_depth_uv
 
       use size
@@ -82,7 +82,7 @@ c$$$      close(20)
       return
       end
 
-c$openad XXX Template OpenAD/ad_template.joint.f
+c$openad XXX Template OADrts/ad_template.joint.f
       subroutine calc_zonal_transport_joint( zonal_transport,local_u )
 c
 c     returns the (linearized) zonal volume tranport through the 
@@ -119,7 +119,7 @@ c     &       + local_u(ix,iy)*dy(iy)*( eta(ix-1,iy)+eta(ix,iy) )
       return
       end !subroutine zonal_transport
 
-c$openad XXX Template OpenAD/ad_template.joint.f
+c$openad XXX Template OADrts/ad_template.joint.f
       subroutine smoothness_lapldepth( cf )
 
       use size
@@ -201,7 +201,7 @@ c$openad xxx simple loop
       return
       end ! subroutine smoothness_lapldepth
 c
-c$openad XXX Template OpenAD/ad_template.joint.f
+c$openad XXX Template OADrts/ad_template.joint.f
       subroutine smoothness_graddepth( cf )
 
       use size

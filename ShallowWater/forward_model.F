@@ -20,7 +20,7 @@ cadj subroutine read_eta_data output = 1
 
 
 
-c$openad XXX Template OpenAD/ad_template_timing.joint.f
+c$openad XXX Template OADrts/ad_template_timing.joint.f
        subroutine forward_model( nctrl, xc, cost_final )
 
       use size

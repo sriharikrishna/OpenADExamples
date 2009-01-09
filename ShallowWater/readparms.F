@@ -1,4 +1,4 @@
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine readparms
 
       implicit none
@@ -25,7 +25,7 @@ c
       return
       end ! subroutine readparms
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine read_data_file
 
       use size
@@ -191,7 +191,7 @@ c
       return
       end !subroutine read_data_file
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine boundary_conditions( nx, ny, field, 
      &     xperiodic, yperiodic )
 c     
@@ -238,7 +238,7 @@ c     locals
       return
       end !subroutine boundary_conditions
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine read_data_fields
 
       use size
@@ -330,7 +330,7 @@ c
       return
       end !subroutine read_data_fields
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine prep_depth
 
       use size
@@ -387,7 +387,7 @@ c
       return
       end !subroutine prep_depth
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine ini_scales
 
       use size
@@ -430,7 +430,7 @@ c
       return
       end ! subroutine ini_scales
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine prep_coriolis
 
       use size
@@ -490,7 +490,7 @@ c
       return
       end !subroutine readparms
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine make_masks
 
       use size
@@ -577,7 +577,7 @@ c
       return
       end !subroutine make_masks
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine variance( nx, ny, f, fmask, varf )
 
       implicit none
@@ -617,7 +617,7 @@ c     locals
       return
       end ! subroutine variance
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine check_cfl
 
       use size
@@ -685,7 +685,7 @@ c     local variables
       return
       end ! subroutine check_cfl
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine read_extended_field( ncdatafile, fname, field )
 
       use size
@@ -725,7 +725,7 @@ c     locals
       return
       end !subroutine read_extended_field
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine read_field( ncdatafile, start_time, fname, field )
 
       use size

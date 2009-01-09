@@ -1,4 +1,4 @@
-c$openad XXX Template OpenAD/ad_template.joint.f
+c$openad XXX Template OADrts/ad_template.joint.f
       subroutine cost_depth( cf )
 
       use size

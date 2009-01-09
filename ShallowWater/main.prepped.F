@@ -27,7 +27,7 @@ c set the execution mode
       our_rev_mode%adjoint=.FALSE.
 
 c initialize the tape
-      call tape_init()
+      call oad_tape_init()
 
 c initialize the checkpoint areas
       call cp_init()
@@ -70,10 +70,8 @@ c #############
       print *, 'cost function = ', cost%v
 
       do i=1,nc
-         print *, 'grad(', i, ')= ', xc(i)%d
+         write(*,'(A,I3,A,E25.17E3)') 'grad(', i, ')= ', xc(i)%d
       end do
-
-      print *, 'double tape size:', double_tape_size, ' integer tape size:' , integer_tape_size
 
 c #############
 

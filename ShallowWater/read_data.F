@@ -1,4 +1,4 @@
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine read_data( time )
 
       implicit none
@@ -15,7 +15,7 @@ cph)
 
       end ! subroutine read_data
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine read_eta_data( time )
 
       use size
@@ -74,7 +74,7 @@ c     set data to zero
 
       end ! subroutine read_eta_data
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine read_uv_data( time )
 
       use size
@@ -144,7 +144,7 @@ c     set data to zero
 
       end ! subroutine read_uv_data
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine read_zonal_transport_data( time )
 
       use size
@@ -186,7 +186,7 @@ cph)
 
       end ! subroutine read_zonal_transport_data
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine read_depth_data
 
       use size
@@ -220,7 +220,7 @@ c$$$      end do
 
       end ! subroutine read_depth_data
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine determine_data_time( ncdatafile )
 
       use size
@@ -257,7 +257,7 @@ cju         stop 'abnormal in determine_data_time'
       end ! subroutine determine_data_time
 
 !nt converted to subroutine
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine is_eta_data_time( time, result )
 
       use size

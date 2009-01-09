@@ -1,4 +1,4 @@
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine cost_function( time, cf, local_u, local_v, local_eta )
 c
 c     specify your cost function here

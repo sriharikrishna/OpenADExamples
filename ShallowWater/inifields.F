@@ -1,4 +1,4 @@
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine inifields
 
       use size

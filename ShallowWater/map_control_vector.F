@@ -1,4 +1,4 @@
-c$openad XXX Template OpenAD/ad_template.joint.f
+c$openad XXX Template OADrts/ad_template.joint.f
       subroutine map_from_control_vector( n, xc ) 
 
       use size
@@ -41,7 +41,7 @@ cju         stop
       
       end ! subroutine map_from_control_vector
 
-c$openad XXX Template OpenAD/ad_template.joint.f
+c$openad XXX Template OADrts/ad_template.joint.f
       subroutine map_to_control_vector( n, xc ) 
 
       use size
@@ -83,7 +83,7 @@ cju         stop
       
       end ! subroutine map_to_control_vector
 
-c$openad XXX Template OpenAD/ad_template.joint.f
+c$openad XXX Template OADrts/ad_template.joint.f
       subroutine map_gradient( n, adxc, grad ) 
 
       use size
@@ -121,7 +121,7 @@ cju         stop
       
       end ! subroutine map_gradient
 
-c$openad XXX Template OpenAD/ad_template.joint.f
+c$openad XXX Template OADrts/ad_template.joint.f
       subroutine length_of_control_vector( n )
       
       use size

@@ -1,4 +1,4 @@
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine time_step( it, local_u, local_v, local_eta )
 
       use size
@@ -37,7 +37,7 @@ c
       return
       end ! subroutine time_step
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine umomentum(local_u,local_v, local_eta)
 
       use size
@@ -100,7 +100,7 @@ c$openad xxx simple loop
 c
       end ! subroutine umomentum
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine vmomentum(local_u, local_v, local_eta)
 
       use size
@@ -160,7 +160,7 @@ c$openad xxx simple loop
 c
       end ! subroutine vmomentum
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine continuity(local_u, local_v, local_eta)
       
       use size
@@ -211,7 +211,7 @@ c$openad xxx simple loop
       return
       end ! subroutine continuity
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine calc_overturning( overturning, local_u)
 c
 c     returns the (linearized) overturning tranport 
@@ -245,7 +245,7 @@ c$openad xxx simple loop
       return
       end !subroutine calc_overturning
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine calc_zonal_transport_split( zonal_transport,local_u )
 c
 c     returns the (linearized) zonal volume tranport through the 

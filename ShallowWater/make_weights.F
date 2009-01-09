@@ -1,4 +1,4 @@
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine make_weights
 
       implicit none
@@ -12,7 +12,7 @@ ctest      call make_weights_depth
 
       end !subroutine make_weights
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine make_weights_depth
 
       use size
@@ -88,7 +88,7 @@ c$$$      close(10)
 
       end !subroutine make_weights_depth
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine make_weights_eta
 
       use size
@@ -116,7 +116,7 @@ c$openad xxx simple loop
 
       end !subroutine make_weights_eta
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine make_weights_uv
 
       use size
@@ -147,7 +147,7 @@ c$openad xxx simple loop
 
       end !subroutine make_weights_eta
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine make_weights_zonal_transport
 
       use size
@@ -166,7 +166,7 @@ c     locals
 
       end !subroutine make_weights_zonal_transport
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine make_bounds_for_x( nc, lower_bound, upper_bound )
 
       use size
@@ -201,7 +201,7 @@ c$openad xxx simple loop
 
       end ! subroutine make_bounds_x
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine make_weights_lapldepth
 
       use size
@@ -229,7 +229,7 @@ c$openad xxx simple loop
 
       end ! subroutine make_weights_lapldepth
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine make_weights_graddepth
 
       use size

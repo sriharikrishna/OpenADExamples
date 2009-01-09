@@ -1,4 +1,4 @@
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine ini_io
 
       use size
@@ -141,7 +141,7 @@ c$$$c
 c$$$      return
 c$$$      end                       ! adstate_io
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine state_io( time, nio )
 
       use size
@@ -190,7 +190,7 @@ c
       return
       end                       ! state_io
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine pfields_io
 
       use size      
@@ -249,7 +249,7 @@ c$openad XXX Template OpenAD/ad_template.split.f
       return
       end ! pfields_io
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine save_gradient_io( n, adxc, gname )
 c
 c     this routine maps the gradient vector to a 2D field, the map is
@@ -292,7 +292,7 @@ c
       return
       end ! subroutine save_gradient_io
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine save_depth_io( n, xc, dname )
       
       use size
@@ -335,14 +335,14 @@ c
       return
       end ! subroutine save_depth_io
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine inimini_io
 
       implicit none
 
       end ! subroutine inimin_io
 
-c$openad XXX Template OpenAD/ad_template.split.f
+c$openad XXX Template OADrts/ad_template.split.f
       subroutine save_weights_io
 
       use size
