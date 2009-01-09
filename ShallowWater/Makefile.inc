@@ -13,6 +13,9 @@ LFLAGS  	=
 IPATH   	= -I. -I./Inc
 LIBS    	= -lnetcdff -lnetcdf
 
+ifndef OPENADROOT
+$(error environment variable OPENADROOT is undefined, this example requires it)
+endif
 
 # OpenAD runtime support files 
 OAD_RTS = \

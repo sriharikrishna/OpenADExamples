@@ -7,10 +7,6 @@ OAD_active.f90:
 	ln -sf ${OPENADROOT}/runTimeSupport/scalar/$@ ./
 w2f__types.f90 iaddr.c:
 	ln -sf ${OPENADROOT}/runTimeSupport/all/$@ ./
-OAD_rev.f90:
-	ln -sf ${OPENADROOT}/runTimeSupport/simple/$@ ./
-ad_inline.f OAD_cp.f90 OAD_tape.f90:
-	ln -sf ${OPENADROOT}/runTimeSupport/cpToFile/$@ ./
 timeRatio.c:
 	ln -sf ${OPENADROOT}/runTimeSupport/metrics/$@ ./
 

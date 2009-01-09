@@ -27,7 +27,7 @@ c set the execution mode
       our_rev_mode%adjoint=.FALSE.
 
 c initialize the tape
-      call oad_tape_init()
+      call tape_init()
 
 c initialize the checkpoint areas
       call cp_init()

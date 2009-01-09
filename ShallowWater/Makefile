@@ -75,7 +75,7 @@ numericalCore.xaif : numericalCore.B
 	${OPENADFORTTKROOT}/bin/whirl2xaif -o $@ $<
 # xaif -> xaif'
 numericalCore.xb.xaif : numericalCore.xaif
-	${XAIFBOOSTERROOT}/xaifBooster/algorithms/BasicBlockPreaccumulationReverse/test/t -i $< -c ${XAIFSCHEMAROOT}/schema/examples/inlinable_intrinsics.xaif -s ${XAIFSCHEMAROOT}/schema -f -o $@ -U
+	${XAIFBOOSTERROOT}/xaifBooster/algorithms/BasicBlockPreaccumulationReverse/test/t -i $< -c ${XAIFSCHEMAROOT}/schema/examples/inlinable_intrinsics.xaif -s ${XAIFSCHEMAROOT}/schema -o $@ -U
 # xaif' -> whirl'
 numericalCore.xb.x2w.B : numericalCore.xb.xaif  
 	${OPENADFORTTKROOT}/bin/xaif2whirl --structured numericalCore.B $<
@@ -84,7 +84,7 @@ numericalCore.xb.x2w.w2f.f: numericalCore.xb.x2w.B
 	${OPEN64ROOT}/whirl2f/whirl2f -openad $<
 # postprocess 
 numericalCore.xb.x2w.w2f.pp.f: numericalCore.xb.x2w.w2f.f
-	perl ${OPENADFORTTKROOT}/bin/multi-pp.pl -i ${OPENADROOT}/runTimeSupport/cpToFile/ad_inline.f $<
+	perl ${OPENADFORTTKROOT}/bin/multi-pp.pl -i ${OAD_RTS_DIR}/ad_inline.f $<
 
 # compile this file
 numericalCore.xb.x2w.w2f.pp.o: numericalCore.xb.x2w.w2f.pp.f

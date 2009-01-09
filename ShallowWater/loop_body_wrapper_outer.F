@@ -26,7 +26,7 @@ c$openad XXX Template OADrts/ad_template.joint_split_oif.f
          time_index = (it-1)*ninner+jt
          time = start_time+time_index*dt 
          if ( time_index .le. ntotal ) then
-            print *, 'inner index', jt
+c            print *, 'inner index', jt
             call loop_body_wrapper_inner(local_u, local_v, local_eta,  
      & cost, calc_cost, time, time_index, nio) 
          end if
