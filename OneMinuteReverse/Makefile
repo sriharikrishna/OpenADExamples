@@ -7,7 +7,7 @@ endif
 RTSUPP=w2f__types OAD_active OAD_cp OAD_tape OAD_rev 
 driver: $(addsuffix .o, $(RTSUPP) iaddr) driver.o head.prepped.xb.x2w.w2f.pp.o
 	${F90C} -o $@ $^
-head.prepped.xb.x2w.w2f.pp.f $(addsuffix .f90, $(RTSUPP)) iaddr : toolChain 
+head.prepped.xb.x2w.w2f.pp.f $(addsuffix .f90, $(RTSUPP)) iaddr.c : toolChain 
 toolChain : head.prepped.f90
 	openad -c -m rj $<
 %.o : %.f90
