@@ -18,5 +18,7 @@ toolChain : head.prepped.f90
 	${CC} -o $@ -c $< 
 clean: 
 	rm -f ad_template* ad_inline.f OAD_* w2f__*  iaddr* 
-	rm -f head.prepped.xb* *.B *.xaif *.o *.mod driver *~ 
+	rm -f head.prepped.xb* *.B *.xaif *.o *.mod driver driverE *~ 
 .PHONY: clean toolChain
+# the following include has explicit rules that could replace the openad script
+include MakeExplRules.inc
