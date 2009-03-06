@@ -89,7 +89,7 @@ revolve.f90: ${REVOLVEF9XROOT}/revolve.f90
 %.o : %.c
 	${CC} -o $@ -c $< 
 clean: 
-	rm -f ad_template* ad_inline.f OAD_* w2f__*  iaddr* oad_cp*
+	rm -f ad_template* ad_inline.f OAD_* w2f__*  iaddr* oad_cp* revolve*
 	rm -f numCore* *.B *.xaif *.o *.mod driver driver? *~ 
 
 .PHONY: all clean 
