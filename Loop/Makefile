@@ -79,6 +79,9 @@ OAD_tape.f90 : ${OPENADROOT}/runTimeSupport/cpToFile/OAD_tape.f90
 %.f90: ${OPENADROOT}/runTimeSupport/simple/%.f90
 	cp -f $< $@
 
+revolve.f90: ${REVOLVEF9XROOT}/revolve.f90
+	cp -f $< $@
+
 %.o : %.f90
 	${F90C} -o $@ -c $< 
 %.o : %.f
@@ -87,6 +90,6 @@ OAD_tape.f90 : ${OPENADROOT}/runTimeSupport/cpToFile/OAD_tape.f90
 	${CC} -o $@ -c $< 
 clean: 
 	rm -f ad_template* ad_inline.f OAD_* w2f__*  iaddr* oad_cp*
-	rm -f numCore* *.B *.xaif *.o *.mod driver driverE *~ 
+	rm -f numCore* *.B *.xaif *.o *.mod driver driver? *~ 
 
 .PHONY: all clean 
