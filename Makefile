@@ -3,5 +3,6 @@ clean:
 	cd OneMinuteReverse && $(MAKE) $@
 	cd ShallowWater && $(MAKE) $@
 	cd Lion && $(MAKE) $@
+	cd Loop && $(MAKE) $@
 
 .PHONY: clean
