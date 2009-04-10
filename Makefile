@@ -4,5 +4,6 @@ clean:
 	cd ShallowWater && $(MAKE) $@
 	cd Lion && $(MAKE) $@
 	cd Loop && $(MAKE) $@
+	cd SRCanonical && $(MAKE) $@
 
 .PHONY: clean
