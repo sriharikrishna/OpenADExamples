@@ -4,6 +4,6 @@ func.pre.f90: func.f90
 	--free -o $@ $<
 
 clean: 
-	rm func.pre.f90
+	rm -f func.pre.f90
 
 .PHONY: clean
