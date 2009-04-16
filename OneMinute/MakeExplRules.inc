@@ -19,9 +19,7 @@ head.prepped.xb.x2w.w2f.f: head.prepped.xb.x2w.B
 	${OPEN64ROOT}/whirl2f/whirl2f -openad $<
 # postprocess 
 head.prepped.xb.x2w.w2f.pp.E.f: head.prepped.xb.x2w.w2f.f
-	perl ${OPENADFORTTKROOT}/bin/multi-pp.pl \
-	-i ${OPENADROOT}/runTimeSupport/simple/ad_inline.f -f $<
-	@cp head.prepped.xb.x2w.w2f.pp.f $@
+	${OPENADFORTTK_BASE}/tools/SourceProcessing/postProcess.py -m f -o $@ $<
 
 # we add the .E extension  here to distinguish the targets from the 
 # rules using the openad script
