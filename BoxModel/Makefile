@@ -11,5 +11,7 @@ clean:
 	rm -f *.o *.mod driver  
 	cd FD && $(MAKE) $@
 	cd TLM && $(MAKE) $@
+	cd ADMjoint && $(MAKE) $@
+	cd ADMsplit && $(MAKE) $@
 
 .PHONY: clean 
