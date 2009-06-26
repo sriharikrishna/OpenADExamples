@@ -10,5 +10,6 @@ driver:  all_globals_mod.o driver.o head.o
 clean: 
 	rm -f *.o *.mod driver  
 	cd FD && $(MAKE) $@
+	cd TLM && $(MAKE) $@
 
 .PHONY: clean 
