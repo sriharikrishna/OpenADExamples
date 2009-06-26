@@ -4,6 +4,8 @@ program driver
 
   external head
 
+  external init
+
   double precision, dimension(:), allocatable :: x0
   double precision, dimension(:,:), allocatable :: res_dd
   double precision, dimension(:), allocatable :: x, xph
@@ -11,17 +13,16 @@ program driver
   real h
   integer n,m,nx1,nx2
   integer i,j,k
-  double precision  hx1,hx2,xx2,xx1
   double precision::r
-  double precision zero,one,two,three,four
-  parameter(zero=0.0d0,one=1.0d0,two=2.0d0,three=3.0d0,four=4.0d0)
+
+  h=0.00001
 
   nx1=5
   nx2=5
-  !	  n should nx1*nx2 
-  n=25
-  m=25
-  h=0.00001
+
+  n=nx1*nx2
+  m=n
+
   r=10.0
 
   allocate(x0(n))
@@ -31,22 +32,7 @@ program driver
   allocate(y(m))
   allocate(yph(m))
 
-  !         initial value 
-
-  hx1 = one/dble(nx1 + 1)
-  hx2 = one/dble(nx2 + 1)
-
-  xx2 = hx2
-  do i = 1, nx2
-     xx1 = hx1
-     do j = 1, nx1
-        k = (i - 1)*nx1 + j
-        x0(k) = - xx1*(one - xx1)*xx2*(one - xx2)
-        xx1 = xx1 + hx1
-     end do
-     xx1 = hx1
-     xx2 = xx2 + hx2
-  end do
+  call init(nx1,nx2,x0)
 
   write(*,*) "divided differences"
   do i=1,n   
