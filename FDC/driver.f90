@@ -27,7 +27,7 @@ program driver
   call head(nx1,nx2,x,y,r)
 
   do k=1,m
-     write(*,'(A,I1,A,EN26.16E3)') "y(",k,")=",y(k)
+     write(*,'(A,I2,A,EN26.16E3)') "y(",k,")=",y(k)
   end do
 
   deallocate(x)

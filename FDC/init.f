@@ -1,4 +1,4 @@
-      subroutine init(x0,nx1,nx2)
+      subroutine init(nx1,nx2,x0)
       double precision  x0(nx1*nx2)
       integer nx1,nx2
       integer i,j,k

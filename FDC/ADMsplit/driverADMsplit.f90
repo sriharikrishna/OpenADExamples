@@ -1,6 +1,8 @@
 program driver
 
   use OAD_active
+  use OAD_tape
+  use OAD_rev
   implicit none 
 
   external head
@@ -30,19 +32,26 @@ program driver
 
   call init(nx1,nx2,x0)
 
-  write(*,*) "tangent linear model"
-  do i=1,n   
+  call tape_init()
+  write(*,*) "adjoint model, split mode"
+  do i=1,m   
      do j=1,n   
         x(j)%v=x0(j)
+        x(j)%d=0.0
+     end do
+     do j=1,m   
         if (i==j) then 
-           x(j)%d=1.0
+           y(j)%d=1.0
         else
-           x(j)%d=0.0
+           y(j)%d=0.0
         end if
      end do
+     call OAD_revTape()
      call head(nx1,nx2,x,y,r)
-     do k=1,m
-        res_ad(k,i)=y(k)%d
+     call OAD_revAdjoint()
+     call head(nx1,nx2,x,y,r)
+     do k=1,n
+        res_ad(i,k)=x(k)%d
      end do
   end do
   do k=1,n

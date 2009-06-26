@@ -2,7 +2,7 @@ ifndef (F90C)
 F90C=gfortran
 endif
 RTSUPP=w2f__types OAD_active
-driverTLM: $(addsuffix .o, $(RTSUPP)) head.xb.x2w.w2f.pp.o driverTLM.o 
+driverTLM: $(addsuffix .o, $(RTSUPP)) head.xb.x2w.w2f.pp.o driverTLM.o init.o
 	${F90C} -o $@ $^
 
 head.xb.x2w.w2f.pp.f $(addsuffix .f90, $(RTSUPP)) : toolChain 
@@ -22,7 +22,10 @@ all_globals_mod.f:
 head.f: 
 	ln -s ../$@ ./
 
+init.f:
+	ln -s ../$@ ./
+
 clean: 
 	rm -f ad_template* OAD_* w2f__*  iaddr* 
-	rm -f head.* *.B *.xaif *.o *.mod* driverTLM all_globals_mod.f head.f *~ 
+	rm -f head.* *.B *.xaif *.o *.mod* driverTLM all_globals_mod.f head.f init.f *~ 
 .PHONY: clean toolChain
