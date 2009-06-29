@@ -1,7 +1,7 @@
 ifndef F90C
 F90C=gfortran
 endif
-ifndef (CC)
+ifndef CC
 CC=gcc
 endif
 RTSUPP=w2f__types OAD_active OAD_cp OAD_tape OAD_rev 
