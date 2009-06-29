@@ -13,5 +13,6 @@ clean:
 	cd TLM && $(MAKE) $@
 	cd ADMjoint && $(MAKE) $@
 	cd ADMsplit && $(MAKE) $@
+	cd TLMvec && $(MAKE) $@
 
 .PHONY: clean 
