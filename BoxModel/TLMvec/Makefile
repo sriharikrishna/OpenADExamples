@@ -3,7 +3,7 @@ F90C=gfortran
 endif
 RTSUPP=w2f__types OAD_active
 driverTLMvec: $(addsuffix .o, $(RTSUPP)) numCore.xb.x2w.w2f.pp.o driverTLMvec.o 
-	${F90C}  -O0 -g -o $@ $^
+	${F90C} -o $@ $^
 
 numCore.xb.x2w.w2f.pp.f $(addsuffix .f90, $(RTSUPP)) : toolChain 
 
@@ -14,10 +14,10 @@ numCore.f: all_globals_mod.f head.f
 	cat $^ > $@
 
 %.o : %.f90
-	${F90C} -O0 -g -o $@ -c $< 
+	${F90C} -o $@ -c $< 
 
 %.o : %.f
-	${F90C} -O0 -g -o $@ -c $< 
+	${F90C} -o $@ -c $< 
 
 all_globals_mod.f: 
 	ln -s ../$@ ./
