@@ -1,4 +1,4 @@
-ifndef (F90C)
+ifndef F90C
 F90C=gfortran -g -O0
 endif
 ifndef (CC)
@@ -28,10 +28,10 @@ numCoreR.xb.x2w.w2f.f: numCoreR.xb.x2w.B
 	${OPEN64ROOT}/whirl2f/whirl2f -openad $<
 # postprocess 
 numCoreR.xb.x2w.w2f.pp.f: numCoreR.xb.x2w.w2f.f
-	perl ${OPENADFORTTKROOT}/bin/multi-pp.pl \
+	${OPENADFORTTK_BASE}/tools/SourceProcessing/postProcess.py -m r \
 	-i ${OPENADROOT}/runTimeSupport/cpToFile/ad_inline.f \
 	-t ${OPENADROOT}/runTimeSupport/simple/ad_template.split.f \
-	$<
+	-o $@ $<
 
 ### Forward
 # xaif -> xaif'
@@ -47,7 +47,7 @@ numCoreF.xb.x2w.w2f.f: numCoreF.xb.x2w.B
 	${OPEN64ROOT}/whirl2f/whirl2f -openad $<
 # postprocess 
 numCoreF.xb.x2w.w2f.pp.f: numCoreF.xb.x2w.w2f.f
-	perl ${OPENADFORTTKROOT}/bin/multi-pp.pl -f $<
+	${OPENADFORTTK_BASE}/tools/SourceProcessing/postProcess.py -m f -o $@ $<
 
 
 ### Generic

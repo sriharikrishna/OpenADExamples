@@ -1,4 +1,4 @@
-ifndef (F90C)
+ifndef F90C
 F90C=gfortran
 endif
 driver:  driver.o head.o init.o
