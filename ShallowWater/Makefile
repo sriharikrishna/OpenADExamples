@@ -84,7 +84,7 @@ numericalCore.xb.x2w.w2f.f: numericalCore.xb.x2w.B
 	${OPEN64ROOT}/whirl2f/whirl2f -openad $<
 # postprocess 
 numericalCore.xb.x2w.w2f.pp.f: numericalCore.xb.x2w.w2f.f
-	perl ${OPENADFORTTKROOT}/bin/multi-pp.pl -i ${OAD_RTS_DIR}/ad_inline.f $<
+	${OPENADROOT}/OpenADFortTk/tools/SourceProcessing/postProcess.py -m r -i ${OAD_RTS_DIR}/ad_inline.f -t ${OAD_RTS_DIR}/ad_template.split.f -o $@ $< 
 
 # compile this file
 numericalCore.xb.x2w.w2f.pp.o: numericalCore.xb.x2w.w2f.pp.f
