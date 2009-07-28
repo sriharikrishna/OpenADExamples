@@ -22,7 +22,7 @@ numCoreR.xb.xaif : numCore.xaif
 	-s ${XAIFSCHEMAROOT}/schema -i $< -o $@ 
 # xaif' -> whirl'
 numCoreR.xb.x2w.B : numCoreR.xb.xaif  
-	${OPENADFORTTKROOT}/bin/xaif2whirl --structured numCore.B $<
+	${OPENADFORTTKROOT}/bin/xaif2whirl numCore.B $<
 # whirl' -> fortran'
 numCoreR.xb.x2w.w2f.f: numCoreR.xb.x2w.B
 	${OPEN64ROOT}/whirl2f/whirl2f -openad $<
@@ -41,7 +41,7 @@ numCoreF.xb.xaif : numCore.xaif
 	-s ${XAIFSCHEMAROOT}/schema -i $< -o $@ 
 # xaif' -> whirl'
 numCoreF.xb.x2w.B : numCoreF.xb.xaif  
-	${OPENADFORTTKROOT}/bin/xaif2whirl --structured numCore.B $<
+	${OPENADFORTTKROOT}/bin/xaif2whirl numCore.B $<
 # whirl' -> fortran'
 numCoreF.xb.x2w.w2f.f: numCoreF.xb.x2w.B
 	${OPEN64ROOT}/whirl2f/whirl2f -openad $<

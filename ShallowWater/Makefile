@@ -78,7 +78,7 @@ numericalCore.xb.xaif : numericalCore.xaif
 	${XAIFBOOSTERROOT}/xaifBooster/algorithms/BasicBlockPreaccumulationReverse/driver/oadDriver -i $< -c ${XAIFSCHEMAROOT}/schema/examples/inlinable_intrinsics.xaif -s ${XAIFSCHEMAROOT}/schema -o $@ -U
 # xaif' -> whirl'
 numericalCore.xb.x2w.B : numericalCore.xb.xaif  
-	${OPENADFORTTKROOT}/bin/xaif2whirl --structured numericalCore.B $<
+	${OPENADFORTTKROOT}/bin/xaif2whirl numericalCore.B $<
 # whirl' -> fortran'
 numericalCore.xb.x2w.w2f.f: numericalCore.xb.x2w.B
 	${OPEN64ROOT}/whirl2f/whirl2f -openad $<

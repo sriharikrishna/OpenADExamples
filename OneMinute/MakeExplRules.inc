@@ -13,7 +13,7 @@ head.prepped.xb.xaif : head.prepped.xaif
 	-s ${XAIFSCHEMAROOT}/schema -i $< -o $@ 
 # xaif' -> whirl'
 head.prepped.xb.x2w.B : head.prepped.xb.xaif  
-	${OPENADFORTTKROOT}/bin/xaif2whirl --structured head.prepped.B $<
+	${OPENADFORTTKROOT}/bin/xaif2whirl head.prepped.B $<
 # whirl' -> fortran'
 head.prepped.xb.x2w.w2f.f: head.prepped.xb.x2w.B
 	${OPEN64ROOT}/whirl2f/whirl2f -openad $<
