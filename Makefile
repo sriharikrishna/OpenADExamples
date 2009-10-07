@@ -6,5 +6,6 @@ clean:
 	cd Loop && $(MAKE) $@
 	cd SRCanonical && $(MAKE) $@
 	cd BoxModel && $(MAKE) $@
+	cd FDC && $(MAKE) $@
 
 .PHONY: clean

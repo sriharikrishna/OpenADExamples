@@ -1,7 +1,7 @@
 # preprocess
 func.pre.f90: func.f90
 	${OPENADFORTTK_BASE}/tools/SourceProcessing/preProcess.py \
-	--free -o $@ $<
+	--inputFormat=free -o $@ $<
 
 clean: 
 	rm -f func.pre.f90

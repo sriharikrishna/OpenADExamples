@@ -5,9 +5,9 @@ ifndef CC
 CC=gcc
 endif
 RTSUPP=w2f__types OAD_active OAD_cp OAD_tape OAD_rev 
-driverADMsplit: $(addsuffix .o, $(RTSUPP) iaddr) head.xb.x2w.w2f.pp.o driverADMsplit.o init.o
+driverADMsplit: $(addsuffix .o, $(RTSUPP) iaddr) head.pre.xb.x2w.w2f.post.o driverADMsplit.o init.o
 	${F90C} -o $@ $^
-head.xb.x2w.w2f.pp.f $(addsuffix .f90, $(RTSUPP)) iaddr.c : toolChain 
+head.pre.xb.x2w.w2f.post.f $(addsuffix .f90, $(RTSUPP)) iaddr.c : toolChain 
 toolChain : head.f
 	openad -c -m rs $<
 

@@ -2,10 +2,10 @@ ifndef F90C
 F90C=gfortran
 endif
 RTSUPP=w2f__types OAD_active
-driverTLM: $(addsuffix .o, $(RTSUPP)) head.xb.x2w.w2f.pp.o driverTLM.o init.o
+driverTLM: $(addsuffix .o, $(RTSUPP)) head.pre.xb.x2w.w2f.post.o driverTLM.o init.o
 	${F90C} -o $@ $^
 
-head.xb.x2w.w2f.pp.f $(addsuffix .f90, $(RTSUPP)) : toolChain 
+head.pre.xb.x2w.w2f.post.f $(addsuffix .f90, $(RTSUPP)) : toolChain 
 
 toolChain : head.f
 	openad -c -m f $<

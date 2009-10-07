@@ -5,9 +5,9 @@ ifndef CC
 CC=gcc
 endif
 RTSUPP=w2f__types OAD_active OAD_cp OAD_tape OAD_rev 
-driverADMjoint: $(addsuffix .o, $(RTSUPP) iaddr) numCore.xb.x2w.w2f.pp.o driverADMjoint.o
+driverADMjoint: $(addsuffix .o, $(RTSUPP) iaddr) numCore.pre.xb.x2w.w2f.post.o driverADMjoint.o
 	${F90C} -o $@ $^
-numCore.xb.x2w.w2f.pp.f $(addsuffix .f90, $(RTSUPP)) iaddr.c : toolChain 
+numCore.pre.xb.x2w.w2f.post.f $(addsuffix .f90, $(RTSUPP)) iaddr.c : toolChain 
 toolChain : numCore.f
 	openad -c -m rj $<
 
