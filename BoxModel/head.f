@@ -323,7 +323,7 @@ c-- (the transport in the model, in Sv):
 c-- The thermohaline circulation due to the Salinity/ temperature
 c-- effects alone is given by R_S*P, R_T*P:
       do l = 1, 2*ndim
-         if ( l. LE. ndim ) then
+         if ( l .LE. ndim ) then
             proj_t(l) = 1.
             proj_s(l) = 0.
          else
