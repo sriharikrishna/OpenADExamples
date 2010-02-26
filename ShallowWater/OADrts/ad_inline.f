@@ -1,7 +1,7 @@
 C taping --------------------------------------------
 
 
-      subroutine push(x)
+      subroutine push_s0(x)
 C $OpenAD$ INLINE DECLS
       double precision :: x
 C $OpenAD$ END DECLS
@@ -24,8 +24,7 @@ C $OpenAD$ END DECLS
       double_tape_pointer=double_tape_pointer+1
       end subroutine 
 
-
-      subroutine pop(x)
+      subroutine pop_s0(x)
 C $OpenAD$ INLINE DECLS
       double precision :: x
 C $OpenAD$ END DECLS
@@ -68,7 +67,7 @@ C $OpenAD$ INLINE DECLS
       type(active), intent(in) :: x
       type(active), intent(inout) :: y
 C $OpenAD$ END DECLS
-      y%d=y%d+x%d*a
+      y%d=y%d+x%d*(a)
       end subroutine
 
       subroutine zeroderiv(x)
@@ -85,7 +84,6 @@ C $OpenAD$ INLINE DECLS
 C $OpenAD$ END DECLS
       x%d=y%d
       end subroutine
-
 
       subroutine incderiv(y,x)
 C $OpenAD$ INLINE DECLS
