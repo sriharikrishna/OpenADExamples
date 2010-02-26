@@ -3,7 +3,7 @@ subroutine foo (a)
   a=a*2
 end
 
-program func 
+program p
   real x
   x=1.0;
   call foo(x*3.0)
