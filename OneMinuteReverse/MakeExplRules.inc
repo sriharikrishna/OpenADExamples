@@ -1,7 +1,7 @@
 # explicit make rules
 # preprocess
 head.prepped.pre.f90: head.prepped.f90
-        ${OPENADFORTTK_BASE}/tools/SourceProcessing/preProcess.py -m r --inputFormat=free -o $@ $<
+	${OPENADFORTTK_BASE}/tools/SourceProcessing/preProcess.py -m r --inputFormat=free -o $@ $<
 # fortran -> whirl
 head.prepped.pre.B: head.prepped.pre.f90 
 	${OPEN64ROOT}/crayf90/sgi/mfef90 -z -F -N132 $<
