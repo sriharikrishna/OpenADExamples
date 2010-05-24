@@ -1,8 +1,8 @@
 program driver
   implicit none 
-  external head 
+  external head
   integer, parameter :: n=2
-  double precision , dimension (n) :: x,b,xh,bh
+  double precision , dimension (n) :: x, b, xh, bh
   double precision , dimension (n,n) :: Jacobian
   double precision :: h=0.00001D0
   integer :: i,j
