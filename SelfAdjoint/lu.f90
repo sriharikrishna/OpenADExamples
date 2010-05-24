@@ -61,8 +61,7 @@ contains
 
   subroutine testImpl(A,x,b)
     implicit none 
-    double precision, intent(in) :: A(:,:), b(:)
-    double precision, intent(out) :: x(:)
+    double precision, intent(in) :: A(:,:), x(:), b(:)
     print *, '  test: max residual of (Ax-b): ',maxval(abs(matmul(A,x)-b))
   end subroutine
 
