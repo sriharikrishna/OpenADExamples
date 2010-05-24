@@ -1,23 +1,21 @@
-! stubs for module LU
+! stub for module LU
 
 module luStubs
-
-  use lu : trueSolve => solve, trueTest => test
 
   public :: solve
 
   interface solve
-     module procedure solveImpl
+     module procedure solveImplStub
   end interface
 
   interface test
-     module procedure testImpl
+     module procedure testImplStub
   end interface
 
 contains 
 
-  subroutine solveImpl(A,x,b)
-    !$openad template oad_template_solve.f90
+  subroutine solveImplStub(A,x,b)
+    !$openad xxx template oad_template_solve.f90
     implicit none 
     double precision, intent(in) :: A(:,:), b(:)
     double precision, intent(out) :: x(:)
@@ -25,15 +23,15 @@ contains
     double precision, dimension(size(A,1)) ::  d
     double precision coeff
     ! just establish a simple dependency here
-    ! so the analysis gets the right idea
-    b(1)=A(1,1)*x(1)
-  end subroutine solve
+    ! so the analysis gets the idea
+    x(1)=b(1)/A(1,1)
+  end subroutine
 
-  subroutine testImpl(A,x,b)
-    !$openad template oad_template_test.f90
+  subroutine testImplStub(A,x,b)
+    !$openad xxx template oad_template_test.f90
     implicit none 
     double precision, intent(in) :: A(:,:), b(:)
     double precision, intent(out) :: x(:)
-  end subroutine test
+  end subroutine
 
-end module 
+end module

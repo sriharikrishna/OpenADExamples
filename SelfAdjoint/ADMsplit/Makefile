@@ -5,7 +5,7 @@ ifndef CC
 CC=gcc
 endif
 RTSUPP=w2f__types OAD_active OAD_cp OAD_tape OAD_rev 
-driverADMsplit: $(addsuffix .o, $(RTSUPP) iaddr) numCore.pre.xb.x2w.w2f.post.o driverADMsplit.o lu.o
+driverADMsplit: $(addsuffix .o, $(RTSUPP) iaddr) lu.o numCore.pre.xb.x2w.w2f.post.o driverADMsplit.o 
 	${F90C} -o $@ $^
 numCore.pre.xb.x2w.w2f.post.f90 $(addsuffix .f90, $(RTSUPP)) iaddr.c : toolChain 
 toolChain : numCore.f90
@@ -15,7 +15,7 @@ numCore.f90: luStubs.f90 head.f90
 	cat $^ | sed 's/use LU/use LUstubs/' > $@
 
 %.o : %.f90
-	${F90C} -o $@ -c $< 
+	${F90C} ${F90FLAGS} -o $@ -c $< 
 
 %.o : %.c
 	${CC} -o $@ -c $< 
