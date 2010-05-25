@@ -6,7 +6,7 @@ driver: lu.o  driver.o head.o
 %.o : %.f90
 	${F90C} -o $@ -c $< 
 clean: 
-	rm -f *.o driver  
+	rm -f *.o *.mod driver  
 	cd FD && $(MAKE) $@
 	cd ADMsplit && $(MAKE) $@
 

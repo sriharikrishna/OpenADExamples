@@ -62,7 +62,7 @@ contains
   subroutine testImpl(A,x,b)
     implicit none 
     double precision, intent(in) :: A(:,:), x(:), b(:)
-    print *, '  test: max residual of (Ax-b): ',maxval(abs(matmul(A,x)-b))
+    print *, '  test: max of |Ax-b|: ',maxval(abs(matmul(A,x)-b))
   end subroutine
 
 end module

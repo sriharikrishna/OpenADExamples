@@ -30,8 +30,7 @@ contains
   subroutine testImplStub(A,x,b)
     !$openad xxx template oad_template_test.f90
     implicit none 
-    double precision, intent(in) :: A(:,:), b(:)
-    double precision, intent(out) :: x(:)
+    double precision, intent(in) :: A(:,:), b(:), x(:)
   end subroutine
 
 end module

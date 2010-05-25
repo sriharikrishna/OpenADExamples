@@ -14,5 +14,5 @@ program driver
    call head(bh,xh)
    Jacobian(:,i)=(xh-x)/h
   end do
-  print *, "FD Jacobian: ", Jacobian
+  write(*,'(A,4(E24.13))') "FD Jacobian: ", Jacobian
 end program driver

@@ -24,7 +24,7 @@ head.f90 lu.f90:
 	ln -s ../$@ ./
 
 clean: 
-	rm -f ad_template* ad_inline.f OAD_* w2f__*  iaddr* 
+	rm -f ad_template* ad_inline.f OAD_* w2f__*  iaddr* head.f90 lu.f90
 	rm -f numCore.* *.o *.mod* driverADMsplit *~ 
 
 .PHONY: clean toolChain
