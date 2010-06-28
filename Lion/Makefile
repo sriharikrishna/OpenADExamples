@@ -8,7 +8,7 @@ head.prepped.pre.xb.x2w.w2f.post.f90 $(addsuffix .f90, $(RTSUPP)) : toolChain
 toolChain : head.prepped.f90
 	openad -c -m f $<
 show:  head.prepped.pre.xaif
-	${XAIFBOOSTERROOT}/xaifBooster/algorithms/BasicBlockPreaccumulation/driver/oadDriver -v -V -i $< -s ${XAIFSCHEMAROOT}/schema -c ${XAIFSCHEMAROOT}/schema/examples/inlinable_intrinsics.xaif -o head.prepped.pre.xb.xaif  -g 8
+	${XAIFBOOSTERROOT}/xaifBooster/algorithms/BasicBlockPreaccumulation/driver/oadDriver -v -V -i $< -s ${XAIFSCHEMAROOT}/schema -c ${XAIFSCHEMAROOT}/schema/examples/inlinable_intrinsics.xaif -o head.prepped.pre.xb.xaif  -g 8 -M 0
 showScarce:  head.prepped.pre.xaif
 	${XAIFBOOSTERROOT}/xaifBooster/algorithms/BasicBlockPreaccumulation/driver/oadDriver -v -V -i $< -s ${XAIFSCHEMAROOT}/schema -c ${XAIFSCHEMAROOT}/schema/examples/inlinable_intrinsics.xaif -o head.prepped.pre.xb.xaif  -g 8 -M 1
 oadDriver:
