@@ -16,7 +16,7 @@ program driver
   integer n,m,nx1,nx2
   integer i,j,k
   type(active)::r
-
+  integer maxDoubleTapeLength
   nx1=5
   nx2=5
 
@@ -48,6 +48,7 @@ program driver
      end do
      call OAD_revTape()
      call head(nx1,nx2,x,y,r)
+     maxDoubleTapeLength=double_tape_pointer-1 ! to illustrate the tape size
      call OAD_revAdjoint()
      call head(nx1,nx2,x,y,r)
      do k=1,n
@@ -59,7 +60,7 @@ program driver
         write(*,'(2(A,I2),A,EN26.16E3)') "F(",i,",",k,")=",res_ad(i,k)
      end do
   end do
-
+  write (*,'(2(A,I4))') 'tape stats: doubles ',maxDoubleTapeLength
   deallocate(x0)
   deallocate(res_ad)
   deallocate(x)
