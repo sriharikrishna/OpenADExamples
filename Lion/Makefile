@@ -9,6 +9,8 @@ toolChain : head.prepped.f90
 	openad -c -m f $<
 show:  head.prepped.pre.xaif
 	${XAIFBOOSTERROOT}/xaifBooster/algorithms/BasicBlockPreaccumulation/driver/oadDriver -v -V -i $< -s ${XAIFSCHEMAROOT}/schema -c ${XAIFSCHEMAROOT}/schema/examples/inlinable_intrinsics.xaif -o head.prepped.pre.xb.xaif  -g 8 -M 0
+showRandom:  head.prepped.pre.xaif
+	${XAIFBOOSTERROOT}/xaifBooster/algorithms/BasicBlockPreaccumulation/driver/oadDriver -v -V -i $< -s ${XAIFSCHEMAROOT}/schema -c ${XAIFSCHEMAROOT}/schema/examples/inlinable_intrinsics.xaif -o head.prepped.pre.xb.xaif  -g 8 -a -M 0
 showScarce:  head.prepped.pre.xaif
 	${XAIFBOOSTERROOT}/xaifBooster/algorithms/BasicBlockPreaccumulation/driver/oadDriver -v -V -i $< -s ${XAIFSCHEMAROOT}/schema -c ${XAIFSCHEMAROOT}/schema/examples/inlinable_intrinsics.xaif -o head.prepped.pre.xb.xaif  -g 8 -M 1
 oadDriver:
@@ -18,4 +20,4 @@ oadDriver:
 clean: 
 	rm -f ad_template* OAD_* w2f__*  iaddr* oadDriver
 	rm -f head.prepped.pre* *.B *.xaif *.o *.mod driver *~ 
-.PHONY: clean toolChain show showScarce
+.PHONY: clean toolChain show showRandom showScarce
