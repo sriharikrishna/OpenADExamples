@@ -22,11 +22,11 @@
              theAction=rvNextAction()
              select case (theAction%actionFlag) 
              case (rvStore)
-                call cp_write_open(theAction%iteration)
+                call cp_write_open(theAction%cpNum)
 !$PLACEHOLDER_PRAGMA$ id=4
                 call cp_close
              case (rvRestore)
-                call cp_read_open(theAction%iteration)
+                call cp_read_open(theAction%cpNum)
 !$PLACEHOLDER_PRAGMA$ id=6
                 currIter=theAction%iteration
                 call cp_close
