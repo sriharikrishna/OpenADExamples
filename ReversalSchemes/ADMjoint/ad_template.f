@@ -30,11 +30,12 @@ C            print*, " tape       ", our_rev_mode
 !$PLACEHOLDER_PRAGMA$ id=2
             call OAD_revAdjoint
           end if 
+          call revStatsUpdateTape(oad_dt_ptr-1)
           if (our_rev_mode%adjoint) then
              call OAD_revRestoreTape
 C            print*, " adjoint    ", our_rev_mode
 !$PLACEHOLDER_PRAGMA$ id=3
              call OAD_revRestoreTape
           end if 
-          call revStatsUpdate(cp_fNumber()-1, oad_dt_ptr-1)
+          call revStatsUpdateCP(cp_fNumber()-1)
         end subroutine template

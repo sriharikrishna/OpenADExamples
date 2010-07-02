@@ -1,20 +1,26 @@
 module RevStats
 
-public :: revStatsInit, revStatsupdate, revStatsDump
+public :: revStatsInit, revStatsUpdateTape, revStatsUpdateCP, revStatsDump
 
 integer :: maxCP, maxTape
 
 contains
+
   subroutine revStatsInit()
     maxCP=0
     maxTape=0
   end subroutine revStatsInit
   
-  subroutine revStatsupdate(cpPointer, tapePointer) 
-    integer :: cpPointer, tapePointer
+  subroutine revStatsUpdateCP(cpPointer) 
+    integer :: cpPointer
     if (cpPointer>maxCP) maxCP=cpPointer
-    if (tapePoiner>maxTape) maxTape=tapePointer
-  end subroutine revStatsupdate
+  end subroutine revStatsUpdateCP
+  
+  subroutine revStatsupdateTape( tapePointer) 
+    implicit none
+    integer :: tapePointer
+    if (tapePointer>maxTape) maxTape=tapePointer
+  end subroutine revStatsupdateTape
   
   subroutine revStatsDump()
     print *, 'revStats: maxCP=',maxCP, ' maxTape=', maxTape
