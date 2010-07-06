@@ -41,6 +41,8 @@ OAD_active.f90: ${OPENADROOT}/runTimeSupport/scalar/OAD_active.f90
 	cp -f $< $@
 OAD_rev.f90: ${OPENADROOT}/runTimeSupport/simple/OAD_rev.f90
 	cp -f $< $@
+revStats.f90: ../Extras/revStats.f90
+	cp -f $< $@
 %.f90: ${OPENADROOT}/runTimeSupport/cpToFile/%.f90
 	cp -f $< $@
 %.o : %.f90
@@ -56,6 +58,6 @@ head.f:
 	ln -s ../$@ ./
 
 clean: 
-	rm -f ad_inline.f OAD_* w2f__* oad_cp.0* 
+	rm -f ad_inline.f OAD_* w2f__* oad_cp.0* revStats*
 	rm -f numCore.* *.B *.xaif *.o *.mod* driverADMjoint all_globals_mod.f head.f *~ 
 .PHONY: clean toolChain

@@ -16,8 +16,8 @@ program boxmodel_adm_driver
 
   write(*,*) "adjoint model, joint mode"
   call oad_tape_init()
-  call revStatsInit()
   do i=1,2*kdim
+     call revStatsInit()
      do j=1,2*kdim
         call zero_deriv(xx(j))
      end do

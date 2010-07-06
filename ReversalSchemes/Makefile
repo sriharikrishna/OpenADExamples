@@ -2,7 +2,7 @@ ifndef F90C
 F90C=gfortran
 endif
 
-TDIRS=$(sort $(dir $(wildcard */)))
+TDIRS=$(sort $(dir $(wildcard ADM*/)))
 
 TDIRS_ALL=$(addsuffix _all, $(TDIRS))
 

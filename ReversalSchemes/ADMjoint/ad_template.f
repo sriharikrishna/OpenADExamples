@@ -19,12 +19,14 @@
              call cp_close
           end if
           if (our_rev_mode%plain) then
+            revStatsFCounters%__SRNAME__=revStatsFCounters%__SRNAME__+1
             our_orig_mode=our_rev_mode
             our_rev_mode%arg_store=.FALSE.
 !$PLACEHOLDER_PRAGMA$ id=1
             our_rev_mode=our_orig_mode
           end if 
           if (our_rev_mode%tape) then
+            revStatsFCounters%__SRNAME__=revStatsFCounters%__SRNAME__+1
             call OAD_revStorePlain
 C            print*, " tape       ", our_rev_mode
 !$PLACEHOLDER_PRAGMA$ id=2
