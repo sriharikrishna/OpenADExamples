@@ -8,7 +8,6 @@ program boxmodel_driver
   external box_model_body
 
      call box_ini_params
-     call box_ini_fields
      call box_model_body
      do j=1,2*kdim
         write(*,'(2(A,I1,A,EN26.16E3))')" tnew(",j,")=",tnew(j),&
