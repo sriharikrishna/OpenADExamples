@@ -1,6 +1,7 @@
 module RevStats
 
 public :: revStatsInit, revStatsUpdateTape, revStatsUpdateCP, revStatsDump
+public :: revStatsRevolveCPcount
 
 type fCountersType   
 integer :: & 
@@ -20,7 +21,7 @@ end type
 
 type(fCountersType), save, public :: revStatsFCounters
 
-integer :: maxCP, maxTape
+integer :: maxCP, maxTape, revStatsRevolveCPcount=0
 
 contains
 

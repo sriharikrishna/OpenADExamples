@@ -14,6 +14,8 @@ program boxmodel_adm_driver
 
   external box_model_body
 
+  write (*,fmt='(a)',advance='no') 'number of Revolve checkpoints = '
+  read (*,*) revStatsRevolveCPcount
   write(*,*) "adjoint model, joint mode"
   call oad_tape_init()
   do i=1,2*kdim
