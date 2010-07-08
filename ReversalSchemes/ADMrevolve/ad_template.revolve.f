@@ -42,6 +42,7 @@
                 select case (theAction%actionFlag) 
                 case (rvStore)
                   call cp_write_open(theAction%cpNum+jointCPCount)
+                  call revStatsUpdateCP(cp_fNumber()+1)
 !$PLACEHOLDER_PRAGMA$ id=4
                   call cp_close
                 case (rvRestore)
@@ -63,5 +64,4 @@
               end do
               call OAD_revRestoreTape
             end if 
-          call revStatsUpdateCP(cp_fNumber()-1)
        end subroutine template
