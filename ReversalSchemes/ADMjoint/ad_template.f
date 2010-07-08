@@ -39,5 +39,5 @@ C            print*, " adjoint    ", our_rev_mode
 !$PLACEHOLDER_PRAGMA$ id=3
              call OAD_revRestoreTape
           end if 
-          call revStatsUpdateCP(cp_fNumber()-1)
+          call revStatsUpdateCP(cp_fNumber())
         end subroutine template
