@@ -1,7 +1,8 @@
-subroutine  solve(n,A,x,b)
+subroutine  solve(n,A,x,b,trans)
   implicit none
   integer :: n
   double precision :: A(n,n), x(n), b(n)
+  logical trans
   ! local 
   integer :: i,j
   ! umfpack specific setup: 
@@ -42,7 +43,7 @@ subroutine  solve(n,A,x,b)
        n,       & ! rank 
        n*n,     & ! nnz
        1,       & ! keep the input matrix intact
-       .false., & ! transposed matrix?
+       trans,   & ! transposed matrix?
        umfValSize, & 
        umfIndexSize, &  
        umfVal,  &  
@@ -56,7 +57,7 @@ subroutine  solve(n,A,x,b)
   call UMD2SO(  & 
        n,       & ! rank 
        0,       & ! no iterative refinement
-       .false., & ! transposed matrix?
+       .false., & ! transposed again?
        umfValSize, & 
        umfIndexSize, &  
        umfVal,  &  
