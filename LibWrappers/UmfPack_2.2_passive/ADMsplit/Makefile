@@ -3,7 +3,7 @@ F90C=gfortran
 endif
 
 ifndef UMFPACK_LIB_DIR
-$(error "need UMFPACK_LIB_DIR to be set in the environment")
+$(error "need UMFPACK_LIB_DIR to be set in the environment pointing to an installation of UMFPACK v 2.2")
 endif
 
 RTSUPP=w2f__types OAD_active OAD_tape OAD_rev 
