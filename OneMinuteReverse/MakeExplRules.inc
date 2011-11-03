@@ -22,6 +22,7 @@ head.prepped.pre.xb.x2w.w2f.f: head.prepped.pre.xb.x2w.B
 # postprocess 
 head.prepped.pre.xb.x2w.w2f.post.E.f90: head.prepped.pre.xb.x2w.w2f.f
 	${OPENADFORTTK_BASE}/tools/SourceProcessing/postProcess.py -m r \
+	--infoUnitFile=w2f__types.E.f90 \
 	-i ${OPENADROOT}/runTimeSupport/simple/ad_inline.f		\
 	-t ${OPENADROOT}/runTimeSupport/simple/ad_template.joint.f      \
 	--outputFormat=free -o $@ $<

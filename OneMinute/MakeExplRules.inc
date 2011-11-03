@@ -21,7 +21,8 @@ head.prepped.pre.xb.x2w.w2f.f: head.prepped.pre.xb.x2w.B
 	${OPEN64ROOT}/whirl2f/whirl2f -openad $<
 # postprocess 
 head.prepped.pre.xb.x2w.w2f.post.E.f90: head.prepped.pre.xb.x2w.w2f.f
-	${OPENADFORTTK_BASE}/tools/SourceProcessing/postProcess.py -m f --outputFormat=free -o $@ $<
+	${OPENADFORTTK_BASE}/tools/SourceProcessing/postProcess.py -m f --outputFormat=free \
+	--infoUnitFile=w2f__types.E.f90 -o $@ $<
 # we add the .E extension  here to distinguish the targets from the 
 # rules using the openad script
 driverE: $(addsuffix .E.o, $(RTSUPP)) driver.o head.prepped.pre.xb.x2w.w2f.post.E.o

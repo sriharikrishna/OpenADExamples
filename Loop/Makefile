@@ -29,6 +29,7 @@ numCoreR.xb.x2w.w2f.f: numCoreR.xb.x2w.B
 # postprocess 
 numCoreR.xb.x2w.w2f.pp.f: numCoreR.xb.x2w.w2f.f
 	${OPENADFORTTK_BASE}/tools/SourceProcessing/postProcess.py -m r \
+	--infoUnitFile=w2f__types.f90 \
 	-i ${OPENADROOT}/runTimeSupport/cpToFile/ad_inline.f \
 	-t ${OPENADROOT}/runTimeSupport/simple/ad_template.split.f \
 	-o $@ $<
@@ -47,7 +48,9 @@ numCoreF.xb.x2w.w2f.f: numCoreF.xb.x2w.B
 	${OPEN64ROOT}/whirl2f/whirl2f -openad $<
 # postprocess 
 numCoreF.xb.x2w.w2f.pp.f: numCoreF.xb.x2w.w2f.f
-	${OPENADFORTTK_BASE}/tools/SourceProcessing/postProcess.py -m f -o $@ $<
+	${OPENADFORTTK_BASE}/tools/SourceProcessing/postProcess.py -m f \
+	--infoUnitFile=w2f__types.f90 \
+	-o $@ $<
 
 
 ### Generic
