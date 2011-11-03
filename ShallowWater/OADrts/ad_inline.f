@@ -33,7 +33,7 @@ C $OpenAD$ END DECLS
       end subroutine
 
 
-      subroutine push_i(x)
+      subroutine push_i_s0(x)
 C $OpenAD$ INLINE DECLS
       integer :: x
 C $OpenAD$ END DECLS
@@ -51,7 +51,7 @@ C $OpenAD$ END DECLS
       integer_tape_pointer=integer_tape_pointer+1
       end subroutine 
 
-      subroutine pop_i(x)
+      subroutine pop_i_s0(x)
 C $OpenAD$ INLINE DECLS
       use OpenAD_tape
       implicit none
