@@ -56,7 +56,6 @@
       end do
       end if 
       if (our_rev_mode%adjoint) then
-         currIter=0
          IF (.NOT.initialized) WRITE(*,'(A)') 'Error: not initialized'
          do while (theAction%actionFlag/=rvDone)
            select case (theAction%actionFlag) 
