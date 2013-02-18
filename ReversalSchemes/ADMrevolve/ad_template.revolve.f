@@ -53,13 +53,13 @@
                 case (rvForward)
                   call OAD_revPlain
                   do currIter=currIter,theAction%iteration-1
-                    call box_forward(currIter)
+                    call box_forward(currIter+1)
                   end do
                 case (rvFirstUTurn,rvUTurn)
                   call OAD_revTape
-                  call box_forward(currIter)
+                  call box_forward(currIter+1)
                   call OAD_revAdjoint
-                  call box_forward(currIter)
+                  call box_forward(currIter+1)
                 end select   
               end do
               call OAD_revRestoreTape
