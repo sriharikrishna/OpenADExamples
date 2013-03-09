@@ -9,7 +9,11 @@ CC 		= gcc
 CFLAGS  	= -O0 -g
 FPP     	= cpp
 FPPFLAGS 	= -traditional-cpp
-LFLAGS  	= 
+ifdef NETCDFROOT
+LFLAGS 	        = -L${NETCDFROOT}/lib
+else
+LFLAGS          =
+endif
 IPATH   	= -I. -I./Inc
 LIBS    	= -lnetcdff -lnetcdf
 
