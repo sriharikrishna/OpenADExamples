@@ -7,7 +7,7 @@
 !$TEMPLATE_PRAGMA_DECLARATIONS
           LOGICAL :: initialized=.FALSE.
           TYPE(rvAction) :: theAction
-          CHARACTER , DIMENSION(80) :: errorMsg
+          CHARACTER(80) :: errorMsg
           integer :: jointCPCount
           integer :: currIter
           type(modeType) :: our_orig_mode

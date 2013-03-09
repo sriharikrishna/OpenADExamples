@@ -9,7 +9,7 @@
           external iaddr
           LOGICAL :: initialized=.FALSE.
           TYPE(rvAction) :: theAction
-          CHARACTER , DIMENSION(80) :: errorMsg
+          CHARACTER(80) :: errorMsg
           integer :: cpCount
           integer :: currIter
           currIter=0

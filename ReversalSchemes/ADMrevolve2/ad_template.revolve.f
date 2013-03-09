@@ -7,7 +7,7 @@
 !$TEMPLATE_PRAGMA_DECLARATIONS
       LOGICAL :: initialized=.FALSE.
       TYPE(rvAction),save :: theAction
-      CHARACTER , DIMENSION(80) :: errorMsg
+      CHARACTER(80) :: errorMsg
       integer, save :: jointCPCount
       integer, save :: currIter
       
