@@ -34,7 +34,7 @@ numCore.pre.xb.x2w.w2f.f: numCore.pre.xb.x2w.B
 numCore.pre.xb.x2w.w2f.post.f90: numCore.pre.xb.x2w.w2f.f
 	${OPENADFORTTK_BASE}/tools/SourceProcessing/postProcess.py -m r \
 	--infoUnitFile=w2f__types.f90 \
-	-i ${OPENADROOT}/runTimeSupport/cpToFile/ad_inline.f		\
+	-i ${OPENADROOT}/runTimeSupport/simple/ad_inline.f		\
 	-t ${OPENADROOT}/runTimeSupport/simple/ad_template.split.f      \
 	--outputFormat=free -o $@ $<
 w2f__types.f90: ${OPENADROOT}/runTimeSupport/all/w2f__types.f90
