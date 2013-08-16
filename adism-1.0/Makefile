@@ -4,8 +4,8 @@ clean all:
 # if the environemt has the definitions of UMFPACK_LIB_DIR, NETCDFROOT and mpi is available:
 
 adism_run: adism_binaries
-	cd testConfigurations/eismint2 && ../../bin/adism simple.config
-	cd testConfigurations/eismint2 && ../../bin/adism_FD simple.config
+	cd testConfigurations/eismint2 && ../../bin/adism e2a-sens.config
+	cd testConfigurations/eismint2 && ../../bin/adism_FD e2a-sens.config
 
 adism_binaries: 
 	cd src && $(MAKE)
