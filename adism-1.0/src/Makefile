@@ -69,13 +69,13 @@ adism_adjoint: $(addsuffix .o, $(RTSUPP)) \
 %.o: $(ADSDIR)/%.f90
 	$(F90C) $(F90CFLAGS) $< 
 
-.PHONY: clean spotless
+.PHONY: clean distclean
 
 clean:
 	cd $(GLIMMER) && $(MAKE) $@
 	rm -f *.o *.mod head.f *~  data.dat
 
-spotless: clean
+distclean: clean
 	cd $(GLIMMER) && $(MAKE) $@
 	rm -f *.o *.mod head.f *~  data.dat $(EXE)
 
