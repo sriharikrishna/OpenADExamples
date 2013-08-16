@@ -29,9 +29,10 @@
 #
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+TOPDIR=.
 include MakeDefs.mk
 
-SOURCES = adism_ncdf adism_mbal adism_umf 	
+OBJS=adism_ncdf.o adism_mbal.o adism_umf.o adism_wrap.o adism_body.o adism_loop.o adism_core.o adism_mbal.o adism_umf.o adism_data.o
 RTSUPP = w2f__types OAD_active OAD_tape OAD_cp OAD_rev revolve
 ADSDIR = adsupport
 
@@ -42,17 +43,16 @@ all: $(GLIMLIB) $(EXE)
 $(GLIMLIB): 
 	cd $(GLIMMER) && $(MAKE)
 
-adism:     $(addsuffix .o, $(SOURCES)) adism.o adism_wrap.o adism_body.o adism_loop.o adism_core.o adism_mbal.o adism_umf.o adism_data.o $(GLIMLIB) 
+adism: adism.o $(OBJS)  $(GLIMLIB) 
 	$(LD) -o $@ $^ $(LDFLAGS)
 
-adism_FD:  $(addsuffix .o, $(SOURCES)) adism_FD.o adism_wrap.o adism_body.o adism_loop.o adism_core.o adism_mbal.o adism_umf.o adism_data.o $(GLIMLIB) 
+adism_FD: adism_FD.o $(OBJS) $(GLIMLIB) 
 	$(LD) -o $@ $^ $(LDFLAGS)
 
-adism_sens: $(addsuffix .o, $(SOURCES)) adism_sens.o adism_wrap.o adism_body.o adism_loop.o adism_core.o adism_mbal.o adism_umf.o adism_data.o $(GLIMLIB)
+adism_sens: adism_sens.o $(OBJS) $(GLIMLIB)
 	$(LD) -o $@ $^ $(LDFLAGS)
 
-adism_sens_par: $(addsuffix .o, $(SOURCES)) adism_sens_par.o adism_wrap.o adism_body.o adism_loop.o adism_core.o adism_mbal.o \
-    adism_umf.o adism_data.o $(GLIMLIB)
+adism_sens_par: adism_sens_par.o $(OBJS) $(GLIMLIB)
 	${MPIFC} -o $@ $^ $(LDFLAGS) 
 
 adism_adjoint: $(addsuffix .o, $(RTSUPP)) \

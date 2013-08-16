@@ -26,7 +26,7 @@ ifndef MPIFC
 MPIFC=mpif90
 endif
 
-GLIMMER = glimmerThermal
+GLIMMER = $(TOPDIR)/glimmerThermal
 GLIMLIB = $(GLIMMER)/libglimtherm.a
 IPATH+= -I$(GLIMMER)
 
