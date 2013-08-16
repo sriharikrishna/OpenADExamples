@@ -46,12 +46,12 @@ ${LIBRARY}: ${OBJS}
 	$(F90C) -c -g $(F90CFLAGS) $< 
 
 
-.PHONY: clean spotless
+.PHONY: clean distclean
 
 clean:
 	rm -f *.o *.mod ${LIBRARY}
 
-spotless:
+distclean: clean
 	rm -f *.o *.mod $(EXE)     # removes object and executables
 
 include f90_dep.mak
