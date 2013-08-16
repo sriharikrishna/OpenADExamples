@@ -29,8 +29,8 @@
 #
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Compiler
-ifndef FC
-FC=gfortran
+ifndef F90C
+F90C=gfortran
 endif
 
 OBJS = glide_tempFullSoln.o  glimmer_physcon.o glimmer_log.o \
@@ -43,7 +43,7 @@ ${LIBRARY}: ${OBJS}
 	ar -r $@ $^
 
 %.o: %.F90
-	${FC} -c -g ${FCFLAGS} $< 
+	$(F90C) -c -g $(F90CFLAGS) $< 
 
 
 .PHONY: clean spotless
@@ -55,17 +55,4 @@ spotless:
 	rm -f *.o *.mod $(EXE)     # removes object and executables
 
 include f90_dep.mak
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -31,28 +31,25 @@
 # Library locations
 # UMFPACK 2.2
 ifndef UMFPACK_LIB_DIR
-UMFPACK_LIB_DIR=../UMFPACK2.2
-endif
-
-# BLAS
-ifndef BLAS_LIB_DIR
-BLAS_LIB_DIR=../BLAS
+$(error "need UMFPACK_LIB_DIR to be set in the environment pointing to an installation of UMFPACK v 2.2")
 endif
 
 # NetCDF (for Ubuntu/Linux Mint)
-ifndef NCDF_LIB
-NCDF_LIB = /usr/lib
+ifndef NETCDFROOT
+NETCDFROOT = /usr
 endif
-ifndef NCDF_INC
-NCDF_INC = /usr/include
-endif
-ifndef NCDFL
-NCDFL = -lnetcdff
-endif
+# these depend on how netcdf was configured: 
+NETCDFLIBS = -lnetcdff -lnetcdf
+NETCDFLIBPATH = -L$(NETCDFROOT)/lib
+IPATH+= -I$(NETCDFROOT)/include
 
 # Compiler
-ifndef FC
-FC=gfortran
+ifndef F90C
+export F90C=gfortran
+endif
+
+ifndef F90CFLAGS
+export F90CFLAGS=-g -c $(IPATH)
 endif
 
 ifndef MPIFC
@@ -61,11 +58,14 @@ endif
 
 GLIMMER = glimmerThermal
 GLIMLIB = $(GLIMMER)/libglimtherm.a
+IPATH+= -I$(GLIMMER)
 
 SOURCES = adism_ncdf adism_mbal adism_umf 	
 RTSUPP = w2f__types OAD_active OAD_tape OAD_cp OAD_rev revolve
 ADSDIR = adsupport
-GLIMMER_LIB_DIR=$(GLIMMER)
+
+LD=$(F90C)
+LDFLAGS=-L${UMFPACK_LIB_DIR} -lumfpack  -lblas ${NETCDFLIBPATH} $(NETCDFLIBS)
 
 EXE = adism adism_FD adism_sens adism_sens_par adism_adjoint
 
@@ -75,37 +75,40 @@ $(GLIMLIB):
 	cd $(GLIMMER) && $(MAKE)
 
 adism:     $(addsuffix .o, $(SOURCES)) adism.o adism_wrap.o adism_body.o adism_loop.o adism_core.o adism_mbal.o adism_umf.o adism_data.o $(GLIMLIB) 
-	${FC} -g -o $@ $^ -L${UMFPACK_LIB_DIR} -lumfpack -L${BLAS_LIB_DIR} -lblas -L${NCDF_LIB} ${NCDFL}
+	$(LD) -o $@ $^ $(LDFLAGS)
 
 adism_FD:  $(addsuffix .o, $(SOURCES)) adism_FD.o adism_wrap.o adism_body.o adism_loop.o adism_core.o adism_mbal.o adism_umf.o adism_data.o $(GLIMLIB) 
-	${FC} -o $@ $^ -L${UMFPACK_LIB_DIR} -lumfpack -L${BLAS_LIB_DIR} -lblas -L${NCDF_LIB} ${NCDFL}
+	$(LD) -o $@ $^ $(LDFLAGS)
 
 adism_sens: $(addsuffix .o, $(SOURCES)) adism_sens.o adism_wrap.o adism_body.o adism_loop.o adism_core.o adism_mbal.o adism_umf.o adism_data.o $(GLIMLIB)
-	${FC} -o $@ $^ -L${UMFPACK_LIB_DIR} -lumfpack -L${BLAS_LIB_DIR} -lblas -L${NCDF_LIB} ${NCDFL}
+	$(LD) -o $@ $^ $(LDFLAGS)
 
 adism_sens_par: $(addsuffix .o, $(SOURCES)) adism_sens_par.o adism_wrap.o adism_body.o adism_loop.o adism_core.o adism_mbal.o \
     adism_umf.o adism_data.o $(GLIMLIB)
-	${MPIFC} -o $@ $^ -L${UMFPACK_LIB_DIR} -lumfpack -L${BLAS_LIB_DIR} -lblas -L${NCDF_LIB} ${NCDFL}
+	${MPIFC} -o $@ $^ $(LDFLAGS) 
 
-adism_adjoint: $(addsuffix .o, $(RTSUPP)) ${GLIMMER_LIB_DIR}/libglimtherm.a adism_data.o \
-	adism_ncdf.o adism_adcore.o adism_adjoint.o cpSupport.o ${UMFPACK_LIB_DIR}/libumfpack.a
-	${FC} -o $@ $^ -L${NCDF_LIB} ${NCDFL} -L${UMFPACK_LIB_DIR} -L${GLIMMER_LIB_DIR} -lglimtherm -lumfpack -L${BLAS_LIB_DIR} -lblas
+adism_adjoint: $(addsuffix .o, $(RTSUPP)) \
+	adism_data.o adism_ncdf.o adism_adcore.o adism_adjoint.o \
+	cpSupport.o $(GLIMLIB) ${UMFPACK_LIB_DIR}/libumfpack.a
+	$(LD) -o $@ $^ $(LDFLAGS)
 
 %.o: %.F90
-	${FC} -g -c ${FCFLAGS} $< -I${NCDF_INC} -I${GLIMMER} ${NCDFL}
+	$(F90C) $(F90CFLAGS) $< 
 
 %.o: %.f90
-	${FC} -g -c ${FCFLAGS} $< -I${NCDF_INC} -I${GLIMMER} ${NCDFL}
+	$(F90C) $(F90CFLAGS) $< 
 
 %.o: $(ADSDIR)/%.f90
-	${FC} -g -c ${FCFLAGS} $< -I${NCDF_INC}
+	$(F90C) $(F90CFLAGS) $< 
 
 .PHONY: clean spotless
 
 clean:
+	cd $(GLIMMER) && $(MAKE) $@
 	rm -f *.o *.mod head.f *~  data.dat
 
-spotless:
+spotless: clean
+	cd $(GLIMMER) && $(MAKE) $@
 	rm -f *.o *.mod head.f *~  data.dat $(EXE)
 
 adism_wrap.o: adism_wrap.F90 adism_body.o adism_core.o adism_loop.o adism_mbal.o adism_umf.o
@@ -119,7 +122,7 @@ adism.o:      adism.F90 adism_wrap.o adism_data.o
 adism_FD.o:   adism_FD.F90 adism_wrap.o adism_data.o
 adism_sens.o: adism_sens.F90 adism_wrap.o adism_data.o
 adism_sens_par.o: adism_sens_par.F90 adism_wrap.o adism_data.o
-	$(MPIFC) -g -c ${FCFLAGS} $< -I${NCDF_INC} -I${GLIMMER} ${NCDFL}
+	$(MPIFC) -g -c $(F90CFLAGS) $< 
 adism_data.o: adism_data.F90 adism_core.o
 adism_adcore.o: adism_adcore.f90 OAD_tape.o
 
