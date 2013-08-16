@@ -1,49 +1,31 @@
-# Extra variable definitions (from environment)
+TOPDIR=..
 
-GLIMMER_LIB_DIR=../glimmerThermal
+include $(TOPDIR)/MakeDefs.mk
 
-ifndef UMFPACK_LIB_DIR
-UMFPACK_LIB_DIR=../../UMFPACK2.2
-endif
-ifndef BLAS_LIB_DIR
-BLAS_LIB_DIR=../../BLAS
-endif
 ifdef DEBUG
 PPDEBUG=-v
 else 
 PPDEBUG=
 endif
 # NetCDF
-ifndef NCDF_LIB
-NCDF_LIB = /usr/lib
-endif
-ifndef NCDF_INC
-NCDF_INC = /usr/include
-endif
-ifndef NCDFL
-NCDFL = -lnetcdff
-endif
-
-# Compiler
-ifndef FC
-FC=gfortran
-endif
 
 EXE = adism_adjoint adism_adjoint_bslide 
 
 RTSUPP=w2f__types OAD_active OAD_cp OAD_tape OAD_rev revolve
 
-ALL: $(EXE)
+ALL: ${GLIMLIB} $(EXE)
 
-adism_adjoint: $(addsuffix .o, $(RTSUPP)) ${GLIMMER_LIB_DIR}/libglimtherm.a adism_data.o \
-	adism_ncdf.o adism.pre2.xb.x2w.w2f.post.stripped.o \
-	adism_adjoint.o CP/cpSupport.o ${UMFPACK_LIB_DIR}/libumfpack.a
-	${FC} -o $@ $^ -L${NCDF_LIB} ${NCDFL} -L${UMFPACK_LIB_DIR} -L${GLIMMER_LIB_DIR} -lglimtherm -lumfpack -L${BLAS_LIB_DIR} -lblas
+adism_adjoint: $(addsuffix .o, $(RTSUPP))  \
+	adism_data.o adism_ncdf.o \
+	adism.pre2.xb.x2w.w2f.post.stripped.o \
+	adism_adjoint.o CP/cpSupport.o 
+	$(LD) -o $@ $^ $(LDFLAGS) ${GLIMLIB}
 
-adism_adjoint_bslide: $(addsuffix .o, $(RTSUPP)) ${GLIMMER_LIB_DIR}/libglimtherm.a adism_data.o \
-	 adism_ncdf.o adism_bslide.pre2.xb.x2w.w2f.post.stripped.o \
-	adism_adjoint_bslide.o CP/cpSupport.o ${UMFPACK_LIB_DIR}/libumfpack.a
-	${FC} -o $@ $^ -L${NCDF_LIB} ${NCDFL} -L${UMFPACK_LIB_DIR} -L${GLIMMER_LIB_DIR} -lglimtherm -lumfpack -L${BLAS_LIB_DIR} -lblas
+adism_adjoint_bslide: $(addsuffix .o, $(RTSUPP)) \
+	adism_data.o  adism_ncdf.o \
+	adism_bslide.pre2.xb.x2w.w2f.post.stripped.o \
+	adism_adjoint_bslide.o CP/cpSupport.o 
+	$(LD) -o $@ $^ $(LDFLAGS) ${GLIMLIB}
 
 # preprocess
 adism.pre.f90: glimmer_global.F90  glimmer_physcon.F90  glimmer_utils.F90  glimmer_deriv.F90 \
@@ -152,11 +134,11 @@ revolve.f90: ${REVOLVEF9XROOT}/revolve.f90
 
 # Pattern rules for building fortran objects
 %.o : %.f90
-	${FC} -I${NCDF_INC} -I${GLIMMER_LIB_DIR} -cpp -o $@ -c $< 
+	$(F90C) $(F90CFLAGS) -o $@ $< 
 %.o : %.F90
-	${FC} -I${NCDF_INC} -I${GLIMMER_LIB_DIR} -o $@ -c $< 
+	$(F90C) $(F90CFLAGS) -o $@ $< 
 %.o : %.f
-	${FC} -o $@ -c $< 
+	$(F90C) $(F90CFLAGS) -o $@ $< 
 
 adism_wrap.F90: ../adism_wrap.F90
 	ln -s $< ./$@
@@ -174,27 +156,25 @@ adism_mbal.F90: ../adism_mbal.F90
 	ln -s $< ./$@
 adism_data.F90: ../adism_data.F90
 	ln -s $< ./$@
-glimmer_log.F90: ${GLIMMER_LIB_DIR}/glimmer_log.F90
+glimmer_log.F90: ${GLIMMER}/glimmer_log.F90
 	ln -s $< ./$@
-glimmer_pdd.F90: ${GLIMMER_LIB_DIR}/glimmer_pdd.F90
+glimmer_pdd.F90: ${GLIMMER}/glimmer_pdd.F90
 	ln -s $< ./$@
-glimmer_global.F90: ${GLIMMER_LIB_DIR}/glimmer_global.F90
+glimmer_global.F90: ${GLIMMER}/glimmer_global.F90
 	ln -s $< ./$@
-glimmer_log.F90: ${GLIMMER_LIB_DIR}/glimmer_log.F90
+glimmer_physcon.F90: ${GLIMMER}/glimmer_physcon.F90
 	ln -s $< ./$@
-glimmer_physcon.F90: ${GLIMMER_LIB_DIR}/glimmer_physcon.F90
+glimmer_utils.F90: ${GLIMMER}/glimmer_utils.F90
 	ln -s $< ./$@
-glimmer_utils.F90: ${GLIMMER_LIB_DIR}/glimmer_utils.F90
+glimmer_deriv.F90: ${GLIMMER}/glimmer_deriv.F90
 	ln -s $< ./$@
-glimmer_deriv.F90: ${GLIMMER_LIB_DIR}/glimmer_deriv.F90
+glimmer_pmpt.F90: ${GLIMMER}/glimmer_pmpt.F90
 	ln -s $< ./$@
-glimmer_pmpt.F90: ${GLIMMER_LIB_DIR}/glimmer_pmpt.F90
+glimmer_mask.F90: ${GLIMMER}/glimmer_mask.F90
 	ln -s $< ./$@
-glimmer_mask.F90: ${GLIMMER_LIB_DIR}/glimmer_mask.F90
+glide_tempFullSoln.F90: ${GLIMMER}/glide_tempFullSoln.F90
 	ln -s $< ./$@
-glide_tempFullSoln.F90: ${GLIMMER_LIB_DIR}/glide_tempFullSoln.F90
-	ln -s $< ./$@
-glide_velo.F90: ${GLIMMER_LIB_DIR}/glide_velo.F90
+glide_velo.F90: ${GLIMMER}/glide_velo.F90
 	ln -s $< ./$@
 adism_umf.f90: ../adism_umf.f90
 	ln -s $< ./$@
@@ -209,11 +189,12 @@ clean:
 	rm -f adism_umf.f90 glide_velo.F90 glide_tempFullSoln.F90 glimmer_mask.F90 glimmer_pmpt.F90 glimmer_deriv.F90 
 	rm -f glimmer_utils.F90 glimmer_physcon.F90 glimmer_log.F90 glimmer_global.F90  adism_ncdf.F90 glimmer_pdd.F90
 	rm -f adism_bslide.pre* adism_G.pre* adism_adjoint.f90
-spotless: clean
+
+distclean: clean
 	rm -f adism_adjoint_bslide adism_adjoint
 
-.PHONY: clean toolChain
+.PHONY: clean distclean 
 
-include ${GLIMMER_LIB_DIR}/f90_dep.mak
+include ${GLIMMER}/f90_dep.mak
 adism_ncdf.o: adism_ncdf.F90 glimmer_global.o
 adism_data.o: adism_data.F90 adism_ncdf.o
