@@ -61,22 +61,24 @@ adism_adjoint: $(addsuffix .o, $(RTSUPP)) \
 	$(LD) -o $@ $^ $(LDFLAGS)
 
 %.o: %.F90
-	$(F90C) $(F90CFLAGS) $< 
+	$(F90C) $(F90CFLAGS) -o $@ $< 
 
 %.o: %.f90
-	$(F90C) $(F90CFLAGS) $< 
+	$(F90C) $(F90CFLAGS) -o $@ $< 
 
 %.o: $(ADSDIR)/%.f90
-	$(F90C) $(F90CFLAGS) $< 
+	$(F90C) $(F90CFLAGS) -o $@ $< 
 
 .PHONY: clean distclean
 
 clean:
 	cd $(GLIMMER) && $(MAKE) $@
+	cd Adjoint && $(MAKE) $@
 	rm -f *.o *.mod head.f *~  data.dat
 
 distclean: clean
 	cd $(GLIMMER) && $(MAKE) $@
+	cd Adjoint && $(MAKE) $@
 	rm -f *.o *.mod head.f *~  data.dat $(EXE)
 
 adism_wrap.o: adism_wrap.F90 adism_body.o adism_core.o adism_loop.o adism_mbal.o adism_umf.o
